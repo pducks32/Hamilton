@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0FF1F49AE94DEE795A64A93F /* Pods_Hamilton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF12492DE16C425419685D4 /* Pods_Hamilton_Tests.framework */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		BA5C56C51EF53F3E00E9720D /* Vector3Arithmatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56C41EF53E2100E9720D /* Vector3Arithmatic.swift */; };
+		BA7E49931EF3625600AF17B6 /* Vector2Arithmatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7E49921EF3625600AF17B6 /* Vector2Arithmatic.swift */; };
+		BAC011441F1D91A3009B33D1 /* Angles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC011431F1D91A3009B33D1 /* Angles.swift */; };
+		BAC011491F1ED9A3009B33D1 /* QuaternionInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC011481F1ED9A3009B33D1 /* QuaternionInitializers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,9 +20,12 @@
 		2EF12492DE16C425419685D4 /* Pods_Hamilton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hamilton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACE51AFB9204008FA782 /* Hamilton_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hamilton_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		A2909D8DE44B92B609D246AF /* Hamilton.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Hamilton.podspec; path = ../Hamilton.podspec; sourceTree = "<group>"; };
 		B9DFCC603DA3F69197934A56 /* Pods-Hamilton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hamilton_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hamilton_Tests/Pods-Hamilton_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		BA5C56C41EF53E2100E9720D /* Vector3Arithmatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3Arithmatic.swift; sourceTree = "<group>"; };
+		BA7E49921EF3625600AF17B6 /* Vector2Arithmatic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2Arithmatic.swift; sourceTree = "<group>"; };
+		BAC011431F1D91A3009B33D1 /* Angles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angles.swift; sourceTree = "<group>"; };
+		BAC011481F1ED9A3009B33D1 /* QuaternionInitializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuaternionInitializers.swift; sourceTree = "<group>"; };
 		C67DD03FCD1A4BF6BC6A6FE2 /* Pods-Hamilton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hamilton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hamilton_Tests/Pods-Hamilton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,8 +63,11 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				BA7E49921EF3625600AF17B6 /* Vector2Arithmatic.swift */,
+				BA5C56C41EF53E2100E9720D /* Vector3Arithmatic.swift */,
+				BAC011431F1D91A3009B33D1 /* Angles.swift */,
+				BAC011481F1ED9A3009B33D1 /* QuaternionInitializers.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -128,11 +137,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = CocoaPods;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Patrick Metcalfe";
 				TargetAttributes = {
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9J372XJCQE;
+						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -208,7 +219,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -218,7 +229,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				BAC011491F1ED9A3009B33D1 /* QuaternionInitializers.swift in Sources */,
+				BAC011441F1D91A3009B33D1 /* Angles.swift in Sources */,
+				BA5C56C51EF53F3E00E9720D /* Vector3Arithmatic.swift in Sources */,
+				BA7E49931EF3625600AF17B6 /* Vector2Arithmatic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,13 +247,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -278,13 +300,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -303,6 +333,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -311,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C67DD03FCD1A4BF6BC6A6FE2 /* Pods-Hamilton_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 9J372XJCQE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -320,9 +352,17 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Hamilton/Hamilton.framework/Headers\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -330,14 +370,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B9DFCC603DA3F69197934A56 /* Pods-Hamilton_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 9J372XJCQE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Hamilton/Hamilton.framework/Headers\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
