@@ -125,14 +125,6 @@ public struct Quaternion : Vectorable {
         return sqrt((w * other.w) + (x * other.x) + (y * other.y) + (z * other.z))
     }
     
-    public func crossing(_ other : Quaternion) -> Quaternion {
-        let neww = w * other.w
-        let newx = x * other.x
-        let newy = y * other.y
-        let newz = z * other.z
-        return Quaternion(w: neww, x: newx, y: newy, z: newz)
-    }
-    
     public func adding(_ other : Quaternion) -> Quaternion {
         let neww = w + other.w
         let newx = x + other.x
@@ -199,15 +191,14 @@ public struct Quaternion : Vectorable {
     public var asAxisAngle : (axis: Vector3, angle : Measurement<UnitAngle>) {
         let q = w > 1 ? self : self.normalized()
         let angle = 2 * acos(q.w);
-        let s = sqrt(1.0 - q.w*q.w); // assuming quaternion normalised then w is less than 1, so term always positive.
+        let s = sqrt(1.0 - q.w*q.w);
         var x : Double = 0, y : Double = 0, z : Double = 0
-        if (s < 0.001) { // test to avoid divide by zero, s is always positive due to sqrt
-            // if s close to zero then direction of axis not important
-            x = q.x; // if it is important that axis is normalised then replace with x=1; y=z=0;
+        if (s < 0.001) {
+            x = q.x;
             y = q.y;
             z = q.z;
         } else {
-            x = q.x / s; // normalise axis
+            x = q.x / s;
             y = q.y / s;
             z = q.z / s;
         }

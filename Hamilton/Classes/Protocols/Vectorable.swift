@@ -51,18 +51,6 @@ public protocol Vectorable {
     func normalized() -> Self
 }
 
-//extension RangeReplaceableCollection {
-//    mutating func rotate(by shiftAmount : Int) {
-//        self = self.rotated(by: shiftAmount)
-//    }
-//    
-//    func rotated(by shiftAmount : Int) -> Self {
-//        var alpha : Self = Self.init(self.dropFirst(shiftAmount))
-//        var beta : Self = Self.init(prefix(shiftAmount))
-//        return alpha.append(contentsOf: beta)
-//    }
-//}
-
 extension Vectorable where Size == ThreeDegreesOfFreedom {
     public func crossing(with other : Self) -> Self {
         fatalError("Not Implemented")

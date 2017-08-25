@@ -9,24 +9,29 @@ import Foundation
 import simd
 
 public protocol Rotateable {
-    mutating func rotate(by quaternion : Quaternion, around origin : Self)
-    func rotating(by quaternion : Quaternion, around origin : Self) -> Self
+    mutating func rotate(by quaternion : Quaternion)
+    func rotating(by quaternion : Quaternion) -> Self
+    
+    mutating func rotate(by eulerAngles : EulerAngles)
+    func rotating(by eulerAngles : EulerAngles) -> Self
 }
 
 public extension Rotateable {
-    mutating func rotate(by quaternion : Quaternion, around origin : Self) {
-        self = rotating(by: quaternion, around: origin)
+    mutating func rotate(by quaternion : Quaternion) {
+        self = rotating(by: quaternion)
+    }
+    mutating func rotate(by eulerAngles : EulerAngles) {
+        self = rotating(by: eulerAngles)
+    }
+    func rotating(by eulerAngles : EulerAngles) -> Self {
+        return rotating(by: Quaternion(eulerAngles: eulerAngles))
     }
 }
 
 extension Vector3 : Rotateable {
-    mutating public func rotate(by quaternion : Quaternion, around origin : Vector3 = .zero) {
-        self = rotating(by: quaternion, around: origin)
-    }
-    
-    public func rotating(by quaternion: Quaternion, around origin : Vector3 = .zero) -> Vector3 {
-        let myQuat = _simd_quaternion(simd_double3(quaternion.x, quaternion.y, quaternion.z), quaternion.w)
-        let result = myQuat.act(simd_double3(Double(x), Double(y), Double(z)))
-        return Vector3(Vector3.Component(result.x), Vector3.Component(result.y), Vector3.Component(result.z))
+    public func rotating(by quaternion : Quaternion) -> Vector3 {
+        let selfAsQuat = Quaternion(w: Quaternion.Component(0), x: Quaternion.Component(x), y: Quaternion.Component(y), z: Quaternion.Component(z))
+        let rotateQuat = quaternion.multiplied(by: selfAsQuat).multiplied(by: quaternion.inverse)
+        return Vector3(Vector3.Component(rotateQuat.x), Vector3.Component(rotateQuat.y), Vector3.Component(rotateQuat.z))
     }
 }

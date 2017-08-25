@@ -10,6 +10,8 @@
 		0FF1F49AE94DEE795A64A93F /* Pods_Hamilton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF12492DE16C425419685D4 /* Pods_Hamilton_Tests.framework */; };
 		BA5C56C51EF53F3E00E9720D /* Vector3Arithmatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56C41EF53E2100E9720D /* Vector3Arithmatic.swift */; };
 		BA7E49931EF3625600AF17B6 /* Vector2Arithmatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7E49921EF3625600AF17B6 /* Vector2Arithmatic.swift */; };
+		BABC79451F4FE7F40023CB27 /* QuaternionMultiplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABC79441F4FE7F40023CB27 /* QuaternionMultiplication.swift */; };
+		BABC79471F4FF4950023CB27 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABC79461F4FF4950023CB27 /* Helpers.swift */; };
 		BAC011441F1D91A3009B33D1 /* Angles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC011431F1D91A3009B33D1 /* Angles.swift */; };
 		BAC011491F1ED9A3009B33D1 /* QuaternionInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC011481F1ED9A3009B33D1 /* QuaternionInitializers.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +26,8 @@
 		B9DFCC603DA3F69197934A56 /* Pods-Hamilton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hamilton_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hamilton_Tests/Pods-Hamilton_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BA5C56C41EF53E2100E9720D /* Vector3Arithmatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3Arithmatic.swift; sourceTree = "<group>"; };
 		BA7E49921EF3625600AF17B6 /* Vector2Arithmatic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2Arithmatic.swift; sourceTree = "<group>"; };
+		BABC79441F4FE7F40023CB27 /* QuaternionMultiplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuaternionMultiplication.swift; sourceTree = "<group>"; };
+		BABC79461F4FF4950023CB27 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		BAC011431F1D91A3009B33D1 /* Angles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angles.swift; sourceTree = "<group>"; };
 		BAC011481F1ED9A3009B33D1 /* QuaternionInitializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuaternionInitializers.swift; sourceTree = "<group>"; };
 		C67DD03FCD1A4BF6BC6A6FE2 /* Pods-Hamilton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hamilton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hamilton_Tests/Pods-Hamilton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 				BA5C56C41EF53E2100E9720D /* Vector3Arithmatic.swift */,
 				BAC011431F1D91A3009B33D1 /* Angles.swift */,
 				BAC011481F1ED9A3009B33D1 /* QuaternionInitializers.swift */,
+				BABC79441F4FE7F40023CB27 /* QuaternionMultiplication.swift */,
+				BABC79461F4FF4950023CB27 /* Helpers.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -230,7 +236,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAC011491F1ED9A3009B33D1 /* QuaternionInitializers.swift in Sources */,
+				BABC79471F4FF4950023CB27 /* Helpers.swift in Sources */,
 				BAC011441F1D91A3009B33D1 /* Angles.swift in Sources */,
+				BABC79451F4FE7F40023CB27 /* QuaternionMultiplication.swift in Sources */,
 				BA5C56C51EF53F3E00E9720D /* Vector3Arithmatic.swift in Sources */,
 				BA7E49931EF3625600AF17B6 /* Vector2Arithmatic.swift in Sources */,
 			);
@@ -363,6 +371,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -387,6 +396,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
