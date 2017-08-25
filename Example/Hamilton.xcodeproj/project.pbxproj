@@ -22,7 +22,7 @@
 		2EF12492DE16C425419685D4 /* Pods_Hamilton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hamilton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACE51AFB9204008FA782 /* Hamilton_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hamilton_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2909D8DE44B92B609D246AF /* Hamilton.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Hamilton.podspec; path = ../Hamilton.podspec; sourceTree = "<group>"; };
+		A2909D8DE44B92B609D246AF /* Hamilton.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Hamilton.podspec; path = ../Hamilton.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B9DFCC603DA3F69197934A56 /* Pods-Hamilton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hamilton_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hamilton_Tests/Pods-Hamilton_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BA5C56C41EF53E2100E9720D /* Vector3Arithmatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3Arithmatic.swift; sourceTree = "<group>"; };
 		BA7E49921EF3625600AF17B6 /* Vector2Arithmatic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2Arithmatic.swift; sourceTree = "<group>"; };
