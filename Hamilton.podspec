@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Hamilton'
-  s.version          = '0.2.0'
+  s.version          = '1.0.0'
   s.summary          = 'Helps manipulates quaternions and vectors.'
 
 # This description is used to generate tags and improve search results.
