@@ -1,4 +1,0 @@
-use_frameworks!
-target 'Hamilton_Tests' do
-  pod 'Hamilton', :path => '../'
-end

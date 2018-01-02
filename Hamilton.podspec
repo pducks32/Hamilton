@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Hamilton'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Helps manipulates quaternions and vectors.'
 
 # This description is used to generate tags and improve search results.
@@ -27,9 +27,10 @@ Helps manipulate quaternions and vectors wherever you may find them in the wild.
   s.source           = { :git => 'https://github.com/pducks32/Hamilton.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/pducks32'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '8.0'
+  s.osx.deployment_target = '10.11'
 
-  s.source_files = 'Hamilton/Classes/**/*'
+  s.source_files = 'Sources/Hamilton/**/*'
   
   # s.resource_bundles = {
   #   'Hamilton' => ['Hamilton/Assets/*.png']

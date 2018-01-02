@@ -1,6 +1,0 @@
-framework module Hamilton {
-  umbrella header "Hamilton-umbrella.h"
-
-  export *
-  module * { export * }
-}
