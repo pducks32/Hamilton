@@ -36,6 +36,7 @@
 		BA57C84F1FFC414E009AE032 /* Vector2Arithmatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA57C8491FFC414E009AE032 /* Vector2Arithmatic.swift */; };
 		BA57C8501FFC414E009AE032 /* QuaternionInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA57C84A1FFC414E009AE032 /* QuaternionInitializers.swift */; };
 		BA57C8511FFC414E009AE032 /* QuaternionMultiplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA57C84B1FFC414E009AE032 /* QuaternionMultiplication.swift */; };
+		BA5B111B200B2B9D0061DFDF /* EulerAnglesSystemConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B111A200B2B9D0061DFDF /* EulerAnglesSystemConversionTests.swift */; };
 		BAEC5C2A1FFE11DD007F7014 /* VectorableFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC5C291FFE11DD007F7014 /* VectorableFormatter.swift */; };
 		OBJ_21 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_27 /* HamiltonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* HamiltonTests.swift */; };
@@ -76,6 +77,7 @@
 		BA57C84A1FFC414E009AE032 /* QuaternionInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuaternionInitializers.swift; sourceTree = "<group>"; };
 		BA57C84B1FFC414E009AE032 /* QuaternionMultiplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuaternionMultiplication.swift; sourceTree = "<group>"; };
 		BA57C8521FFC43FD009AE032 /* Hamilton.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hamilton.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BA5B111A200B2B9D0061DFDF /* EulerAnglesSystemConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EulerAnglesSystemConversionTests.swift; sourceTree = "<group>"; };
 		BAEC5C291FFE11DD007F7014 /* VectorableFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorableFormatter.swift; sourceTree = "<group>"; };
 		"Hamilton::Hamilton::Product" /* Hamilton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hamilton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Hamilton::HamiltonTests::Product" /* HamiltonTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = HamiltonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 				BA57C8491FFC414E009AE032 /* Vector2Arithmatic.swift */,
 				BA57C8461FFC414D009AE032 /* Vector3Arithmatic.swift */,
 				OBJ_12 /* HamiltonTests.swift */,
+				BA5B111A200B2B9D0061DFDF /* EulerAnglesSystemConversionTests.swift */,
 			);
 			name = HamiltonTests;
 			path = Tests/HamiltonTests;
@@ -276,6 +279,7 @@
 				BA57C84E1FFC414E009AE032 /* Angles.swift in Sources */,
 				BA57C84D1FFC414E009AE032 /* Helpers.swift in Sources */,
 				BA57C84F1FFC414E009AE032 /* Vector2Arithmatic.swift in Sources */,
+				BA5B111B200B2B9D0061DFDF /* EulerAnglesSystemConversionTests.swift in Sources */,
 				OBJ_27 /* HamiltonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
