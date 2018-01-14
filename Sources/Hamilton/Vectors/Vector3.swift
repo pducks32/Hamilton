@@ -8,22 +8,34 @@
 import Foundation
 
 public struct Vector3 : Vectorable {
-    
+    /// X Axis in 3D space
     public static let xAxis = Vector3(1, 0, 0)
+    /// Y Axis in 3D space
     public static let yAxis = Vector3(0, 1, 0)
+    /// Z Axis in 3D space
     public static let zAxis = Vector3(0, 0, 1)
     
+    /// 3D origin
     public static let zero = Vector3(x: 0, y: 0, z: 0)
     
     public typealias Size = ThreeDegreesOfFreedom
     public typealias Component = Float
     
+    /// First component of vector
     public let x : Component
+    /// Second component of vector
     public let y : Component
+    /// Third component of vector
     public let z : Component
     
     public var components : [Component] {
         return [x, y, z]
+    }
+    
+    public init(_ elements: Component...) {
+        x = elements[0]
+        y = elements[1]
+        z = elements[2]
     }
     
     public init(_ x : Component, _ y : Component, _ z : Component) {
@@ -92,6 +104,7 @@ public struct Vector3 : Vectorable {
         return Vector3(x: newx, y: newy, z: newz)
     }
     
+    /// Are 2 vectors 90deg apart.
     public func isOrthogonal(to other : Vector3) -> Bool {
         return dotting(other) == 0
     }

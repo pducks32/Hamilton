@@ -12,13 +12,21 @@ public struct Vector2 : Vectorable {
     public typealias Size = TwoDegreesOfFreedom
     public typealias Component = Float
     
+    /// 2D origin
     public static let zero = Vector2(x: 0, y: 0)
     
+    /// First component of vector
     public let x : Component
+    /// Second component of vector
     public let y : Component
     
     public var components : [Component] {
         return [x, y]
+    }
+    
+    public init(_ elements: Component...) {
+        x = elements[0]
+        y = elements[1]
     }
     
     public init(x : Component, y : Component) {

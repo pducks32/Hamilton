@@ -7,19 +7,32 @@
 
 import Foundation
 
+/// W first 4 vector.
 public struct Vector4 : Vectorable {
     public typealias Size = FourDegreesOfFreedom
     public typealias Component = Float
     
+    /// 4D origin
     public static let zero = Vector4(w: 0, x: 0, y: 0, z: 0)
     
+    /// First component of vector
     public let w : Component
+    /// Second component of vector
     public let x : Component
+    /// Third component of vector
     public let y : Component
+    /// Fourth component of vector
     public let z : Component
     
     public var components : [Component] {
         return [w, x, y, z]
+    }
+    
+    public init(_ elements: Component...) {
+        w = elements[0]
+        x = elements[1]
+        y = elements[2]
+        z = elements[3]
     }
     
     public init(w : Component, x : Component, y : Component, z : Component) {

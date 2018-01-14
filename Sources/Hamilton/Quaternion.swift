@@ -21,28 +21,47 @@ extension GLKMatrix4 : CustomDebugStringConvertible {
     }
 }
 
+/// A pure rotation in 3D space
+///
+/// - Warning: It's similar enough to a 4D vector to implement
+/// `Vectorable` however it is not a 4 vector and
+/// there are some key differences.
 public struct Quaternion : Vectorable {
     public typealias Size = FourDegreesOfFreedom
     public typealias Component = Double
     
+    /// First component of quaternion
     public let w : Component
+    /// Second component of quaternion
     public let x : Component
+    /// Third component of quaternion
     public let y : Component
+    /// Fourth component of quaternion
     public let z : Component
     
     public var components : [Component] {
         return [w, x, y, z]
     }
     
+    public init(_ elements: Component...) {
+        w = elements[0]
+        x = elements[1]
+        y = elements[2]
+        z = elements[3]
+    }
+    
+    /// Create quaternion from Axis and degrees
     public init(axis : Vector3, degrees : Double) {
         self.init(axis : axis, radians : degrees * Double.pi / 180)
     }
     
+    /// Create quaternion from Axis and angle
     @available(iOS 10.0, OSX 10.12, *)
     public init(axis: Vector3, angle : Measurement<UnitAngle>) {
         self.init(axis : axis, radians : angle.converted(to: .radians).value)
     }
     
+    /// Create quaternion from Axis and radians
     public init(axis : Vector3, radians : Double) {
         let halfAngle = radians / 2
         let s = sin(halfAngle);
@@ -54,17 +73,21 @@ public struct Quaternion : Vectorable {
         z = Component(scaledAxis.z) * s
     }
     
+    /// Creates new quaternion that would rotate `vectorOne` into `vectorTwo`
+    /// - Note: Noncommunative (It's `conjugate` would do the reverse rotation)
     public init(between vectorOne : Vector3, and vectorTwo : Vector3) {
         let perpendicular = vectorOne.crossing(with: vectorTwo)
-        x = Quaternion.Component(perpendicular.x)
-        y = Quaternion.Component(perpendicular.y)
-        z = Quaternion.Component(perpendicular.z)
+        x = Component(perpendicular.x)
+        y = Component(perpendicular.y)
+        z = Component(perpendicular.z)
         let area = vectorOne.dotting(vectorTwo)
         let radiusBetweenMagnitudes = sqrt(pow(vectorOne.magnitude, 2) * pow(vectorTwo.magnitude, 2))
         w = Quaternion.Component(radiusBetweenMagnitudes) + Quaternion.Component(area)
         normalize()
     }
     
+    /// Transform `eulerAngles` into new `Quaternion`
+    /// - Note: Does respect the `eulerAngles`'s `system`
     @available(iOS 10.0, OSX 10.12, *)
     public init(eulerAngles : EulerAngles) {
         let c1 = cos(eulerAngles.pitch / 2)
@@ -154,6 +177,7 @@ public struct Quaternion : Vectorable {
     }
     
     /// Returns composition of `self` and then `other`.
+    /// - Warning: Is not the component wise multipication, use `Vector4`
     public func multiplied(by other : Quaternion) -> Quaternion {
         let newx = x * other.w + w * other.x + y * other.z - z * other.y;
         let newy = y * other.w + w * other.y + z * other.x - x * other.z;
@@ -167,14 +191,24 @@ public struct Quaternion : Vectorable {
         return other.multiplied(by: self)
     }
     
+    /// Describes the reverse rotation of `self`
+    /// - Note: Always returns only the reverse transform while
+    /// `inverse` returns the normalized reverse
+    /// - SeeAlso: `inverse`
+
     public var conjugated : Quaternion {
         return Quaternion(w: w, x: -x, y: -y, z: -z)
     }
     
+    /// Describes the reverse rotation of `self`
+    /// - Note: Always returns the normalized reverse while
+    /// `conjugated` returns only the reverse transform
+    /// - SeeAlso: `conjugated`
     public var inverse : Quaternion {
         return conjugated.normalized()
     }
     
+    /// - Todo: Make work like the inverse of quaternion multipication
     public func divided(by other : Quaternion) -> Quaternion {
         let neww = w / other.w
         let newx = x / other.x
@@ -187,6 +221,12 @@ public struct Quaternion : Vectorable {
         return self.multiplying(scalar: 1 / magnitude)
     }
     
+    /// Converts to `EulerAngles` of `.yzx` system
+    ///
+    /// - Warning: This transform is complex and so
+    /// builds up a lot of round off errors. Keeping
+    /// things in `Quaternion`s is a better solution.
+    /// - Todo: Document the error margin of transform
     @available(iOS 10.0, OSX 10.12, *)
     public var asEulerAngles : EulerAngles {
         let sinXAxisRotation = 2.0 * (w * x + y * z)
@@ -213,9 +253,10 @@ public struct Quaternion : Vectorable {
         return EulerAngles(pitch: xAxisRotationMeasurement,
                            yaw: yAxisRotationMeasurement,
                            roll: zAxisRotationMeasurement,
-                           system: EulerAngles.System.yzx)
+                           system: .yzx)
     }
     
+    /// Converts `self` to an axis/angle pair that can rotate a `Vector3`
     @available(iOS 10.0, OSX 10.12, *)
     public var asAxisAngle : (axis: Vector3, angle : Measurement<UnitAngle>) {
         let q = w > 1 ? self : self.normalized()
@@ -231,7 +272,7 @@ public struct Quaternion : Vectorable {
             y = q.y / s;
             z = q.z / s;
         }
-        let v = Vector3(x: Float(x), y: Float(y), z: Float(z))
+        let v = Vector3(x: Vector3.Component(x), y: Vector3.Component(y), z: Vector3.Component(z))
         return (v, angle.radians)
     }
     
