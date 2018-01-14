@@ -82,6 +82,7 @@
 		BA5B111A200B2B9D0061DFDF /* EulerAnglesSystemConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EulerAnglesSystemConversionTests.swift; sourceTree = "<group>"; };
 		BA5B111D200B3E110061DFDF /* EulerAngles+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EulerAngles+Equatable.swift"; sourceTree = "<group>"; };
 		BA5B111F200B3E600061DFDF /* EulerAngles+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EulerAngles+Operators.swift"; sourceTree = "<group>"; };
+		BA5B1121200C1ABF0061DFDF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BAEC5C291FFE11DD007F7014 /* VectorableFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorableFormatter.swift; sourceTree = "<group>"; };
 		"Hamilton::Hamilton::Product" /* Hamilton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hamilton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Hamilton::HamiltonTests::Product" /* HamiltonTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = HamiltonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +166,7 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				BA5B1121200C1ABF0061DFDF /* README.md */,
 				BA57C8521FFC43FD009AE032 /* Hamilton.podspec */,
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,

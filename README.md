@@ -5,19 +5,28 @@
 [![License](https://img.shields.io/cocoapods/l/Hamilton.svg?style=flat)](http://cocoapods.org/pods/Hamilton)
 [![Platform](https://img.shields.io/cocoapods/p/Hamilton.svg?style=flat)](http://cocoapods.org/pods/Hamilton)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Requirements
 
 Using Swift 4. Please be aware.
 
-## Usage
-
+## Basic Usage
+### Basic Operations
 ```swift
+let baseVector = Vector3(1, 6, 5)
+let otherVector = Vector3(7, 1, 3)
+
+baseVector.adding(otherVector) //=> Vector3(8, 7, 8)
+baseVector.magnitude //=> 7.874
+```
+### Rotations
+```swift
+let baseVector = Vector3(0, 1, 0)
+
 let quat = Quaternion(axis: .xAxis, angle: Degrees(90))
-let rotatedQuat = Vector3(0, 1, 0).rotating(by quat) //=> Vector3(0, 0, 1)
+let eulerAngles = EulerAngles(pitch: 90.degrees, yaw: 0.degrees, roll: 0.degrees, system: .xyz)
+
+baseVector.rotated(by: quat) //=> Vector3(0, 0, 1)
+baseVector.rotated(by: eulerAngles) // -> Vector3(0, 0, 1)
 ```
 
 ## Installation
