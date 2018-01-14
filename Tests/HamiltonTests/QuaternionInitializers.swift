@@ -42,4 +42,16 @@ class QuaternionInitializers: XCTestCase {
         let eulerAsQuat = Quaternion(eulerAngles: euler)
         AssertQuaternionComponentsEqual(quat, eulerAsQuat, within: 0.0005)
     }
+    
+    func testQuaternionIsReversible() {
+        let eulerAngles = EulerAngles(pitch: 45.degrees, yaw: 1.degrees, roll: 16.degrees, system: .yzx)
+        let quaternion = Quaternion(eulerAngles: eulerAngles)
+        let reversedEulerAngles = quaternion.asEulerAngles.converted(to: .degrees)
+        print(eulerAngles.componentwiseDifferenceTo(reversedEulerAngles))
+
+        print(0.00833329622496489.radians.converted(to: .degrees).value)
+        print(eulerAngles.converted(to: .radians).componentwiseDifferenceTo(quaternion.asEulerAngles))
+        XCTAssertEqual(eulerAngles.converted(to: .radians), quaternion.asEulerAngles)
+        XCTAssertEqual(eulerAngles, reversedEulerAngles)
+    }
 }
