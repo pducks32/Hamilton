@@ -10,6 +10,8 @@
 Using Swift 4. Please be aware.
 
 ## Basic Usage
+* Only Right handed coordinate systems are currently supported. Please be aware as Unity, Unreal, and DirectX use left handed systems.
+
 ### Basic Operations
 ```swift
 let baseVector = Vector3(1, 6, 5)
@@ -18,6 +20,7 @@ let otherVector = Vector3(7, 1, 3)
 baseVector.adding(otherVector) //=> Vector3(8, 7, 8)
 baseVector.magnitude //=> 7.874
 ```
+
 ### Rotations
 ```swift
 let baseVector = Vector3(0, 1, 0)
