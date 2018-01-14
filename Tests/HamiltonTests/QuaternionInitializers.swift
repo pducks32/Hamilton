@@ -37,7 +37,7 @@ class QuaternionInitializers: XCTestCase {
     }
     
     func testClosenessFromOnlineCalculator() {
-        let euler = EulerAngles(pitch: Degrees(91.860), yaw: Degrees(33.770), roll: Degrees(-111.272))
+        let euler = EulerAngles(pitch: 91.860.degrees, yaw: 33.770.degrees, roll: (-111.272).degrees)
         let quat = Quaternion(w: 0.548, x: 0.221, y: 0.682, z: -0.432)
         let eulerAsQuat = Quaternion(eulerAngles: euler)
         AssertQuaternionComponentsEqual(quat, eulerAsQuat, within: 0.0005)

@@ -28,13 +28,13 @@ class QuaternionMultiplication: XCTestCase {
         
         let baseVector = Vector3(0, 0, 1)
         
-        let shouldBySimpleNegativeYVector = baseVector.rotating(by: rotateXBy90)
+        let shouldBySimpleNegativeYVector = baseVector.rotated(by: rotateXBy90)
         AssertVector3ComponentsEqual(shouldBySimpleNegativeYVector, Vector3(0, -1, 0))
         
-        let shouldStayTheSame = shouldBySimpleNegativeYVector.rotating(by: rotateYBy90)
+        let shouldStayTheSame = shouldBySimpleNegativeYVector.rotated(by: rotateYBy90)
         AssertVector3ComponentsEqual(shouldStayTheSame, shouldBySimpleNegativeYVector)
         
-        let shouldBeSimpleXVector = shouldStayTheSame.rotating(by: rotateZBy90)
+        let shouldBeSimpleXVector = shouldStayTheSame.rotated(by: rotateZBy90)
         AssertVector3ComponentsEqual(shouldBeSimpleXVector, Vector3(1, 0, 0))
     }
     
@@ -47,21 +47,21 @@ class QuaternionMultiplication: XCTestCase {
         
         let completeTurn = rotateXBy90.multiplied(by: rotateYBy90).multiplied(by: rotateZBy90)
         
-        let shouldBeSimpleXVector = baseVector.rotating(by: completeTurn)
+        let shouldBeSimpleXVector = baseVector.rotated(by: completeTurn)
         AssertVector3ComponentsEqual(shouldBeSimpleXVector, Vector3(1, 0, 0))
     }
     
     func testRotatingIsCounterclockwise() {
         let baseVector = Vector3(0, 0, 1)
         
-        let shouldBySimpleNegativeYVector = baseVector.rotating(by: Quaternion(axis: .xAxis, degrees: 90))
+        let shouldBySimpleNegativeYVector = baseVector.rotated(by: Quaternion(axis: .xAxis, degrees: 90))
         AssertVector3ComponentsEqual(shouldBySimpleNegativeYVector, Vector3(0, -1, 0))
     }
     
     func testRotatingIsNotClockwise() {
         let baseVector = Vector3(0, 0, 1)
         
-        let shouldBySimpleNegativeYVector = baseVector.rotating(by: Quaternion(axis: .xAxis, degrees: 90))
+        let shouldBySimpleNegativeYVector = baseVector.rotated(by: Quaternion(axis: .xAxis, degrees: 90))
         AssertVector3ComponentsNotEqual(shouldBySimpleNegativeYVector, Vector3(0, 1, 0))
     }
 }
