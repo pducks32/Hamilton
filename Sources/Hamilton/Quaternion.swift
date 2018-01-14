@@ -188,6 +188,35 @@ public struct Quaternion : Vectorable {
     }
     
     @available(iOS 10.0, OSX 10.12, *)
+    public var asEulerAngles : EulerAngles {
+        let sinXAxisRotation = 2.0 * (w * x + y * z)
+        let cosXAxisRotation = 1.0 - 2.0 * (x * x + y * y)
+        let xAxisRotation = atan2(sinXAxisRotation, cosXAxisRotation)
+        
+        let sinYAxisRotation = 2 * (w * y - z * x)
+        let yAxisRotation : Double
+        if abs(sinYAxisRotation) > 1 {
+            let sign = sinYAxisRotation / abs(sinYAxisRotation)
+            yAxisRotation = Double.pi * sign
+        } else {
+            yAxisRotation = asin(sinYAxisRotation)
+        }
+        
+        let sinZAxisRotation = 2.0 * (w * z + x * y)
+        let cosZAxisRotation = 1.0 - 2.0 * (y * y + z * z)
+        let zAxisRotation = atan2(sinZAxisRotation, cosZAxisRotation)
+        
+        let xAxisRotationMeasurement = Measurement<UnitAngle>(value: xAxisRotation, unit: .radians)
+        let yAxisRotationMeasurement = Measurement<UnitAngle>(value: yAxisRotation, unit: .radians)
+        let zAxisRotationMeasurement = Measurement<UnitAngle>(value: zAxisRotation, unit: .radians)
+        
+        return EulerAngles(pitch: xAxisRotationMeasurement,
+                           yaw: yAxisRotationMeasurement,
+                           roll: zAxisRotationMeasurement,
+                           system: EulerAngles.System.yzx)
+    }
+    
+    @available(iOS 10.0, OSX 10.12, *)
     public var asAxisAngle : (axis: Vector3, angle : Measurement<UnitAngle>) {
         let q = w > 1 ? self : self.normalized()
         let angle = 2 * acos(q.w);
