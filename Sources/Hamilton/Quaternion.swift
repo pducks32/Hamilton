@@ -144,6 +144,10 @@ public struct Quaternion : Vectorable {
         self.z = z
     }
     
+    public var negated: Quaternion {
+        return Quaternion(w: -w, x: -x, y: -y, z: -z)
+    }
+    
     public func dotting(_ other : Quaternion) -> Component {
         return sqrt((w * other.w) + (x * other.x) + (y * other.y) + (z * other.z))
     }
@@ -256,6 +260,72 @@ public struct Quaternion : Vectorable {
                            system: .yzx)
     }
     
+    @available(iOS 10.0, OSX 10.12, *)
+    public func convertedToEulerAngles(system : EulerAngles.System = .zyx) -> EulerAngles {
+        let matrix = self.asSimdMatrix
+        let matrixValue : ((Int, Int) -> Double) = { a, b in
+            return matrix[a, b]
+        }
+        let m11 = matrixValue(0, 0)
+        let m12 = matrixValue(0, 1)
+        let m13 = matrixValue(0, 2)
+        let m21 = matrixValue(1, 0)
+        let m22 = matrixValue(1, 1)
+        let m23 = matrixValue(1, 2)
+        let m31 = matrixValue(2, 0)
+        let m32 = matrixValue(2, 1)
+        let m33 = matrixValue(2, 2)
+        
+        var x : Double = 0.0
+        var y : Double = 0.0
+        var z : Double = 0.0
+        
+        switch system {
+        case .xyz:
+            y = asin(simd_clamp(m13, -1, 1))
+            if (m13.magnitude < 0.99999) {
+                x = atan2(-m23,m33)
+                z = atan2(-m12,m11)
+            } else {
+                x = atan2(m32,m22)
+                z = 0.0
+            }
+        case .yxz:
+            x = asin(-simd_clamp(m23, -1, 1))
+            if (m23.magnitude < 0.99999) {
+                y = atan2(m13,m33)
+                z = atan2(m21,m22)
+            } else {
+                y = atan2(-m31,m11)
+                z = 0.0
+            }
+        case .zxy:
+            x = asin(simd_clamp(m32, -1, 1))
+            if (m32.magnitude < 0.99999) {
+                y = atan2(-m31,m33)
+                z = atan2(-m12,m22)
+            } else {
+                y = 0.0
+                z = atan2(m21,m11)
+            }
+        case .zyx:
+            y = asin(-simd_clamp(m31, -1, 1))
+            if (m31.magnitude < 0.99999) {
+                x = atan2(m32,m33)
+                z = atan2(m21,m11)
+            } else {
+                x = 0.0
+                z = atan2(-m12,m22)
+            }
+        default:
+            x = 0
+            y = 0
+            z = 0
+        }
+        
+        return EulerAngles(vectorOfAngles: Vector3(x, y, z), unit: .radians, system: system)
+    }
+    
     /// Converts `self` to an axis/angle pair that can rotate a `Vector3`
     @available(iOS 10.0, OSX 10.12, *)
     public var asAxisAngle : (axis: Vector3, angle : Measurement<UnitAngle>) {
@@ -274,6 +344,42 @@ public struct Quaternion : Vectorable {
         }
         let v = Vector3(x: Vector3.Component(x), y: Vector3.Component(y), z: Vector3.Component(z))
         return (v, angle.radians)
+    }
+    public var asSimdQ : simd_quatd {
+        return simd_quatd(ix: x, iy: y, iz: z, r: w)
+    }
+    
+    public var asSimdMatrix : simd_double4x4 {
+        var mat = simd_double4x4()
+        
+        let x2 = x + x
+        let y2 = y + y
+        let z2 = z + z
+        
+        let xx = x * x2, xy = x * y2, xz = x * z2
+        let yy = y * y2, yz = y * z2, zz = z * z2
+        let wx = w * x2, wy = w * y2, wz = w * z2
+        mat[0,0]=1-(yy+zz)
+        mat[0,1]=xy-wz
+        mat[0,2]=xz+wy
+        
+        mat[1,0]=xy+wz
+        mat[1,1]=1-(xx+zz)
+        mat[1,2]=yz-wx
+        
+        mat[2,0]=xz-wy
+        mat[2,1]=yz+wx
+        mat[2,2]=1-(xx+yy)
+        
+        mat[3,0]=0
+        mat[3,1]=0
+        mat[3,2]=0
+        
+        mat[0,3]=0
+        mat[1,3]=0
+        mat[2,3]=0
+        mat[3,3]=1
+        return mat
     }
     
     public var asMatrix : GLKMatrix4 {
@@ -310,7 +416,7 @@ public struct Quaternion : Vectorable {
         return matrix
     }
 }
-
+extension Quaternion : Codable {}
 extension Quaternion : Equatable {}
 public func ==(_ rhs : Quaternion, _ lhs : Quaternion) -> Bool {
     return rhs.w == lhs.w && rhs.x == lhs.x && rhs.y == lhs.y && rhs.z == lhs.z
