@@ -19,7 +19,7 @@ public struct Vector3 : Vectorable {
     public static let zero = Vector3(x: 0, y: 0, z: 0)
     
     public typealias Size = ThreeDegreesOfFreedom
-    public typealias Component = Float
+    public typealias Component = Double
     
     /// First component of vector
     public let x : Component
@@ -48,6 +48,10 @@ public struct Vector3 : Vectorable {
         self.x = x
         self.y = y
         self.z = z
+    }
+    
+    public var negated: Vector3 {
+        return Vector3(x: -x, y: -y, z: -z)
     }
     
     public func dotting(_ other : Vector3) -> Component {
@@ -112,6 +116,7 @@ public struct Vector3 : Vectorable {
     
 }
 
+extension Vector3 : Codable {}
 extension Vector3 : Equatable {}
 public func ==(_ rhs : Vector3, _ lhs : Vector3) -> Bool {
     return rhs.x == lhs.x && rhs.y == lhs.y && rhs.z == lhs.z

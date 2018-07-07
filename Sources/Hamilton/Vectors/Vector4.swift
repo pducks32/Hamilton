@@ -42,6 +42,10 @@ public struct Vector4 : Vectorable {
         self.z = z
     }
     
+    public var negated: Vector4 {
+        return Vector4(w: -w, x: -x, y: -y, z: -z)
+    }
+    
     public func dotting(_ other : Vector4) -> Component {
         return sqrt((w * other.w) + (x * other.x) + (y * other.y) + (z * other.z))
     }
@@ -94,7 +98,7 @@ public struct Vector4 : Vectorable {
         return self.multiplying(scalar: 1 / magnitude)
     }
 }
-
+extension Vector4 : Codable {}
 extension Vector4 : Equatable {}
 public func ==(_ rhs : Vector4, _ lhs : Vector4) -> Bool {
     return rhs.w == lhs.w && rhs.x == lhs.x && rhs.y == lhs.y && rhs.z == lhs.z

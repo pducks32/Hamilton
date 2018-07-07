@@ -34,6 +34,10 @@ public struct Vector2 : Vectorable {
         self.y = y
     }
     
+    public var negated: Vector2 {
+        return Vector2(x: -x, y: -y)
+    }
+    
     public func dotting(_ other : Vector2) -> Component {
         return (x * other.x) + (y * other.y)
     }
@@ -76,7 +80,7 @@ public struct Vector2 : Vectorable {
         return self.multiplying(scalar: 1 / magnitude)
     }
 }
-
+extension Vector2 : Codable {}
 extension Vector2 : Equatable {}
 public func ==(_ rhs : Vector2, _ lhs : Vector2) -> Bool {
     return rhs.x == lhs.x && rhs.y == lhs.y
