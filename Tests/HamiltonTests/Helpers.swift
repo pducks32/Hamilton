@@ -9,14 +9,14 @@
 import XCTest
 @testable import Hamilton
 
-func AssertVector3ComponentsEqual(_ expected : Vector3, _ actual : Vector3, within accuracy : Float = .ulpOfOne, file : StaticString = #file, lineno : UInt = #line) {
+func AssertVector3ComponentsEqual(_ expected : Vector3, _ actual : Vector3, within accuracy : Vector3.Component = .ulpOfOne, file : StaticString = #file, lineno : UInt = #line) {
     zip(["x", "y", "z"], zip(expected.components, actual.components)).forEach { (componentName, components) in
         let (expectedComponent, actualComponent) = components
         XCTAssertEqual(expectedComponent, actualComponent, accuracy: accuracy, formatFailureMessage(component: componentName, expected: expectedComponent, actual: actualComponent, accuracy: accuracy), file: file, line: lineno)
     }
 }
 
-func AssertVector3ComponentsNotEqual(_ expected : Vector3, _ actual : Vector3, within accuracy : Float = .ulpOfOne, numberOfComponentsNotEqual : Int = 1, file : StaticString = #file, lineno : UInt = #line) {
+func AssertVector3ComponentsNotEqual(_ expected : Vector3, _ actual : Vector3, within accuracy : Vector3.Component = .ulpOfOne, numberOfComponentsNotEqual : Int = 1, file : StaticString = #file, lineno : UInt = #line) {
     let doComponentsExceedLimit = zip(expected.components, actual.components).map({ (components) -> Bool in
         let (expectedComponent, actualComponent) = components
         let distanceFromOneToTheOther = expectedComponent.distance(to: actualComponent).magnitude
@@ -25,7 +25,7 @@ func AssertVector3ComponentsNotEqual(_ expected : Vector3, _ actual : Vector3, w
     
     let numberOfComponentsExceedingLimit = doComponentsExceedLimit.filter({ $0 == true }).count
     
-    XCTAssert(numberOfComponentsExceedingLimit <= numberOfComponentsNotEqual, "Components not matching (count: \(numberOfComponentsExceedingLimit)) is less than allowed (\(numberOfComponentsNotEqual))")
+    XCTAssert(numberOfComponentsExceedingLimit <= numberOfComponentsNotEqual, "Components not matching (count: \(numberOfComponentsExceedingLimit)) is less than allowed (\(numberOfComponentsNotEqual))", file: file, line: lineno)
 }
 
 func AssertQuaternionEqual(_ expected : Quaternion, _ actual : Quaternion, within accuracy : Double = 0, file : StaticString = #file, line : UInt = #line) {
