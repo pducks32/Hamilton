@@ -62,6 +62,7 @@ class QuaternionMultiplication: XCTestCase {
         let baseVector = Vector3(0, 0, 1)
         
         let shouldBySimpleNegativeYVector = baseVector.rotated(by: Quaternion(axis: .xAxis, degrees: 90))
-        AssertVector3ComponentsNotEqual(shouldBySimpleNegativeYVector, Vector3(0, 1, 0))
+        print(shouldBySimpleNegativeYVector)
+        AssertVector3ComponentsNotEqual(shouldBySimpleNegativeYVector, Vector3(0, -1, 0))
     }
 }
