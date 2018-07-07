@@ -32,6 +32,11 @@ public protocol Vectorable {
     /// The euclidean distance among the components to the field's origin
     var magnitude : Component { get }
     
+    /// Return negative of all components
+    var negated : Self { get }
+    /// Negates all components
+    mutating func negate()
+    
     /// Inner product with `other`
     func dotting(_ other : Self) -> Component
     
@@ -81,6 +86,12 @@ public protocol Vectorable {
     func normalized() -> Self
 }
 
+extension Vectorable {
+    public static prefix func -(_ v : Self) -> Self {
+        return v.negated
+    }
+}
+
 extension Vectorable where Size == ThreeDegreesOfFreedom {
     /// Exterior product with `other` into new `Self`
     /// - Note: Noncommunative
@@ -120,6 +131,10 @@ extension Vectorable {
     
     public mutating func add(_ other : Self) {
         self = self.adding(other)
+    }
+    
+    public mutating func negate() {
+        self = self.negated
     }
     
     mutating public func subtract(by other : Self) {
