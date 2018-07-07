@@ -50,6 +50,58 @@ class EulerAnglesSystemConversionTests: XCTestCase {
         AssetEulerAnglesExactlyMatchs(zyx.convertedSystem(to: .xyz), expected: expected)
     }
     
+    func testFromRuntimeChecking() {
+        let startQuaternion = Quaternion(w: 0.34817538, x: 0.3857909, y: 0.85275203, z: -0.052471627)
+        let endQuaternion = Quaternion(w: 0.8553054, x: 0.0071712844, y: 0.5174541, z: -0.025346993)
+        let change = Quaternion(w: 0.7389459935527631, x: -0.344469427913271, y: -0.5295440985960993, z: 0.23427052628845318)
+        
+        let betweenThem = startQuaternion.multiplied(by: endQuaternion.inverse)
+        let awayFromStart = startQuaternion.multiplied(by: change)
+        let awayFromRotation = change.multiplied(by: awayFromStart)
+        
+        let backFromAwayFromStart = awayFromStart.multiplied(by: endQuaternion.inverse)
+        let backFromAwayFromRotation = endQuaternion.inverse.multiplied(by: awayFromRotation)
+        
+        print(betweenThem)
+        print(awayFromStart)
+        print(awayFromRotation)
+        print(backFromAwayFromStart)
+        print(backFromAwayFromRotation)
+        print("Break")
+        print(endQuaternion.multiplied(by: change.inverse))
+        print(endQuaternion.premultiplied(by: change.inverse))
+        
+        print(endQuaternion.multiplied(by: change))
+        print(endQuaternion.premultiplied(by: change.inverse))
+        
+        print(endQuaternion.inverse.multiplied(by: change.inverse))
+        print(endQuaternion.inverse.premultiplied(by: change.inverse))
+        print(endQuaternion.inverse.multiplied(by: change))
+        print(endQuaternion.inverse.premultiplied(by: change.inverse))
+    }
+    
+    func testThatWeAreWorking() {
+        let q = Quaternion(w: -0.41991835676895145, x: -0.7558346735139579, y: -0.08143371987999137, z: 0.49573296596179006)
+        let startEuler = q.asEulerAngles.converted(to: .degrees)
+        
+        let rotateX = Quaternion(between: Vector3.yAxis, and: Vector3.zAxis)
+        let rotated = rotateX.multiplied(by: q).multiplied(by: rotateX.inverse)
+        let rotatedB = q.multiplied(by: rotateX).multiplied(by: q.inverse)
+        let rotatedC = rotateX.multiplied(by: q)
+        let rotatedD = rotateX.inverse.multiplied(by: q)
+        
+        let endEulerA = rotated.asEulerAngles.converted(to: .degrees)
+        let endEulerB = rotatedB.asEulerAngles.converted(to: .degrees)
+        let endEulerC = rotatedC.asEulerAngles.converted(to: .degrees)
+        let endEulerD = rotatedD.asEulerAngles.converted(to: .degrees)
+        
+        print(endEulerA)
+        print(endEulerB)
+        print(endEulerC)
+        print(endEulerD)
+        print(startEuler)
+    }
+    
     func testConvertToYZX() {
         let firstRotation = 22.degrees
         let secondRotation = 14.degrees
