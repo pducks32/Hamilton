@@ -30,6 +30,8 @@ public struct Quaternion : Vectorable {
     public typealias Size = FourDegreesOfFreedom
     public typealias Component = Double
     
+    public static let identity = Quaternion(w: 1, x: 0, y: 0, z: 0)
+    
     /// First component of quaternion
     public let w : Component
     /// Second component of quaternion
