@@ -41,6 +41,7 @@
 		BA5B1120200B3E600061DFDF /* EulerAngles+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B111F200B3E600061DFDF /* EulerAngles+Operators.swift */; };
 		BA9EF55E20E2BA37000BD529 /* MatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9EF55D20E2BA37000BD529 /* MatrixTests.swift */; };
 		BA9EF56020E2C57D000BD529 /* Quaternion+EulerAnglesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9EF55F20E2C57D000BD529 /* Quaternion+EulerAnglesTests.swift */; };
+		BACB9E902135E12A00842934 /* Vectorable+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB9E8E2135E12A00842934 /* Vectorable+SceneKit.swift */; };
 		BAEC5C2A1FFE11DD007F7014 /* VectorableFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC5C291FFE11DD007F7014 /* VectorableFormatter.swift */; };
 		OBJ_21 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_27 /* HamiltonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* HamiltonTests.swift */; };
@@ -87,6 +88,7 @@
 		BA5B1121200C1ABF0061DFDF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BA9EF55D20E2BA37000BD529 /* MatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixTests.swift; sourceTree = "<group>"; };
 		BA9EF55F20E2C57D000BD529 /* Quaternion+EulerAnglesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quaternion+EulerAnglesTests.swift"; sourceTree = "<group>"; };
+		BACB9E8E2135E12A00842934 /* Vectorable+SceneKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vectorable+SceneKit.swift"; sourceTree = "<group>"; };
 		BAEC5C291FFE11DD007F7014 /* VectorableFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorableFormatter.swift; sourceTree = "<group>"; };
 		"Hamilton::Hamilton::Product" /* Hamilton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hamilton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Hamilton::HamiltonTests::Product" /* HamiltonTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = HamiltonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,14 @@
 			name = EulerAngles;
 			path = Sources/Hamilton/EulerAngles;
 			sourceTree = SOURCE_ROOT;
+		};
+		BACB9E8D2135E10F00842934 /* SceneKitExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				BACB9E8E2135E12A00842934 /* Vectorable+SceneKit.swift */,
+			);
+			path = SceneKitExtensions;
+			sourceTree = "<group>";
 		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
@@ -192,8 +202,9 @@
 		OBJ_8 /* Hamilton */ = {
 			isa = PBXGroup;
 			children = (
-				BA5B111C200B3DC50061DFDF /* EulerAngles */,
+				BACB9E8D2135E10F00842934 /* SceneKitExtensions */,
 				BA57C8381FFC413D009AE032 /* AngleConvertible.swift */,
+				BA5B111C200B3DC50061DFDF /* EulerAngles */,
 				BA57C8341FFC413D009AE032 /* Quaternion.swift */,
 				BA57C8361FFC413D009AE032 /* Rotateable.swift */,
 				BA57C8331FFC413D009AE032 /* Scalar.swift */,
@@ -313,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				BACB9E902135E12A00842934 /* Vectorable+SceneKit.swift in Sources */,
 				BA57C8411FFC413D009AE032 /* Vectorable.swift in Sources */,
 				BA57C83E1FFC413D009AE032 /* Quaternion.swift in Sources */,
 				BA57C83D1FFC413D009AE032 /* Scalar.swift in Sources */,
