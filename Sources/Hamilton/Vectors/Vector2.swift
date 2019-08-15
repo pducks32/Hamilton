@@ -10,7 +10,7 @@ import Foundation
 public struct Vector2 : Vectorable {
     
     public typealias Size = TwoDegreesOfFreedom
-    public typealias Component = Float
+    public typealias Component = Double
     
     /// 2D origin
     public static let zero = Vector2(x: 0, y: 0)
