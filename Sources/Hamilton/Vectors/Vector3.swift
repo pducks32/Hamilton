@@ -38,12 +38,6 @@ public struct Vector3 : Vectorable {
         z = elements[2]
     }
     
-    public init(_ x : Component, _ y : Component, _ z : Component) {
-        self.x = x
-        self.y = y
-        self.z = z
-    }
-    
     public init(x : Component, y : Component, z : Component) {
         self.x = x
         self.y = y
