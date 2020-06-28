@@ -9,7 +9,7 @@
 import XCTest
 import Hamilton
 
-func XCTAssetCloseTo<X : FloatingPoint>(_ expected : X, actual : X, closerThan : X, file : StaticString = #file, line : UInt = #line) {
+func XCTAssetCloseTo<X : FloatingPoint>(_ expected : X, actual : X, closerThan : X, file : StaticString = #filePath, line : UInt = #line) {
     let distance = abs(actual - expected)
     XCTAssertLessThan(distance, closerThan, file: file, line: line)
 }
