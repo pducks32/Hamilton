@@ -1,6 +1,6 @@
 # Hamilton
 
-[![CI Status](http://img.shields.io/travis/pducks32/Hamilton.svg?style=flat)](https://travis-ci.org/pducks32/Hamilton)
+![Swift](https://github.com/martin-key/Hamilton/workflows/Swift/badge.svg)
 [![Version](https://img.shields.io/cocoapods/v/Hamilton.svg?style=flat)](http://cocoapods.org/pods/Hamilton)
 [![License](https://img.shields.io/cocoapods/l/Hamilton.svg?style=flat)](http://cocoapods.org/pods/Hamilton)
 [![Platform](https://img.shields.io/cocoapods/p/Hamilton.svg?style=flat)](http://cocoapods.org/pods/Hamilton)
