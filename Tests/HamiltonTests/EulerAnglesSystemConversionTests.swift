@@ -9,7 +9,7 @@ import XCTest
 @testable import Hamilton
 
 @available(OSX 10.12, *)
-func AssetEulerAnglesExactlyMatchs(_ actual : EulerAngles, expected : EulerAngles, file : StaticString = #filePath, line : UInt = #line) {
+func AssetEulerAnglesExactlyMatchs(_ actual : EulerAngles, expected : EulerAngles, file : StaticString = #file, line : UInt = #line) {
     XCTAssertEqual(actual.pitch, expected.pitch, file: file, line: line)
     XCTAssertEqual(actual.yaw, expected.yaw, file: file, line: line)
     XCTAssertEqual(actual.roll, expected.roll, file: file, line: line)
